@@ -1,9 +1,9 @@
 <?php
   session_start();
   $db = mysqli_connect('localhost', 'root', '', 'sih');
-  if(isset($_SESSION['username'])){
-    echo "<script type='text/javascript'>location.href = 'test-login.php';</script>";
-  }
+    if(!isset($_SESSION['username'])){
+    echo "<script type='text/javascript'>location.href = 'test.php';</script>";
+  }  
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,24 +11,27 @@
 
     <title>Home Page</title>
 
-    <!---<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+ 
+  
+  
  	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="test.css">
 	
-	 Fontawesome CDN
+	<!-- Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	
+
+
 </head>
 <body>
 <!-- Navigation -->
@@ -41,12 +44,12 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="test.html">Home
+          <a class="nav-link" href="test-login.php">Home
                 <span class="sr-only">(current)</span>
               </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="about.html">About</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="#Artists">Top Artists</a>
@@ -55,13 +58,13 @@
           <a class="nav-link" href="#categories">Categories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop Products</a>
+          <a class="nav-link" href="#products">Shop Products</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="Sign In.html">Login/Register</a>
+          <a class="nav-link" href="logout.php"><?php echo"Logout"?></a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="#">My Profile</a>
+          <a class="nav-link" href="userprofile.php"><?php echo $_SESSION['username']; ?></a>
         </li>
 		 </ul>
     </div>
@@ -69,15 +72,19 @@
 </nav>
 
 <!-- Slideshow -->
-
-<h2 class="w3-center">Automatic Slideshow</h2>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+<h2 class="w3-center">Hand Picked Art</h2>
 <center>
-<div class="w3-content w3-section" style="max-width:500px">
-  <img class="mySlides" src="images\ss1.jpg" style="width:150%" >
-  <img class="mySlides" src="images\images (8).jpg" style="width:100%" >
-  <img class="mySlides" src="images\images (7).jpg" style="width:100%" >
-</div>
+<div class="w3-content w3-section" style="position:relative;width:100%;height:500px;">
+  <img class="mySlides" src="http://www.hdnicewallpapers.com/Walls/Big/Abstract/Colorful_Texture_Art_Abstract_4K_Wallpaper.jpg" style="width:100%;height:500px;" >
+  <img class="mySlides" src="http://hdqwalls.com/wallpapers/small-memory-lp.jpg" style="width:100%;height:500px;" >
+  <img class="mySlides" src="https://images.wallpaperscraft.com/image/stains_abstract_dark_122921_1920x1200.jpg" style="width:100%;height:500px;" >
+  </div>
+  </div>
+  </div>
 </center>
+
 
 <script>
 var myIndex = 0;
@@ -111,7 +118,7 @@ function carousel() {
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-block">
-                    <img class="card-img-top img-fluid" src="sih\parrot.jpg" alt="Card image cap">
+                    <img class="card-img-top img-fluid" src="images\IMG_20171231_123900_HDR.jpg" alt="Card image cap">
                     <br>
 					<br>
                     <h4 class="card-title" style="text-align: center;">Manjiri Kanvinde</h4>
@@ -155,7 +162,7 @@ function carousel() {
         </div>
     </div>
   </div>
-  <button type="button" class="btn btn-outline-primary" style="float: right;"> <a href="E:\SIH'\Top.html"> View All </a> </button>
+  <button type="button" class="btn btn-outline-primary" style="float: right;"> <a href="Top.php"> View All </a> </button>
 </section>
 </div>
 
@@ -171,7 +178,7 @@ function carousel() {
                     <img class="card-img-top img-fluid" src="images\Paintings.jpg" alt="Card image cap">
                     <br>
 					<br>
-                    <h4 class="card-title" style="text-align: center;"> <a href="#"> Paintings </a></h4>
+                    <h4 class="card-title" style="text-align: center;"> <a href="ategoryproduct.php?data123='PAINTINGS'">Paintings </a></h4>
                     <p class="card-text" style="text-align: center;">Devoted to Lynchburg’s exceptional artists and craftsman, the Art & Artisan’s Gallery showcases art created by Lynchburg natives as well as objects made by the people of Lynchburg. Fine examples of textiles, silver, furniture, ceramics, and paintings can be found here.</p>
                     <br>
 					</div>
@@ -183,7 +190,7 @@ function carousel() {
                     <img class="card-img-top img-fluid" src="images\HomeProduct.jpg" alt="Card image cap">
                     <br>
 					<br>
-                    <h4 class="card-title" style="text-align: center;"> <a href="#"> Handicrafts </a> </h4>
+                    <h4 class="card-title" style="text-align: center;"><a href="ategoryproduct.php?data123='HOMEPRODUCT'"> HOMEPRODUCTS </a> </h4>
                     <p class="card-text" style="text-align: center;">Indian handicrafts industry is highly labor intensive, cottage based and decentralized industry. The industry is spread all over the country mainly in rural and urban areas. Most of the manufacturing units are located in rural and small towns, and there is huge market potential in all Indian cities and abroad</p>
                     </div>
             </div>
@@ -194,7 +201,7 @@ function carousel() {
                     <img class="card-img-top img-fluid" src="images\GlassArt.jpg" alt="Card image cap">
                     <br>
 					<br>
-                    <h4 class="card-title" style="text-align: center;"> <a href="#"> Glass Art </a> </h4>
+                    <h4 class="card-title" style="text-align: center;"> <a href="ategoryproduct.php?data123='GLASSWORK'"> Glass Art </a> </h4>
                     <p class="card-text" style="text-align: center;">Bring a brilliant new dimension to your room by incorporating hand crafted glass art. With pieces that are masterfully crafted by our talented community of artisans</p>
                     </div>
             </div>
@@ -205,75 +212,77 @@ function carousel() {
                     <img class="card-img-top img-fluid" src="images\jewelery.jpg" alt="Card image cap">
                     <br>
 					<br>
-                    <h4 class="card-title" style="text-align: center;"> <a href="#"> Jewelry </a> </h4>
+                    <h4 class="card-title" style="text-align: center;"> <a href="ategoryproduct.php?data123='JEWELRY'">Jewelry </a> </h4>
                     <p class="card-text" style="text-align: center;">Jewelry have always been associated with elegance, class and exclusivity. From royals to high society divas, celebrities to actresses,jewelry has adorned the necks, wrists and ears of fashionable women across the world for many years.</p>
                     </div>
             </div>
         </div>
     </div>
   </div>
-  <button class="btn btn-outline-primary" style="float: right;"> <a href="cards.html"> Explore More </a> </button>
+  <button class="btn btn-outline-primary" style="float: right;"> <a href="cards.php"> Explore More </a> </button>
 </section>
 </div>
 
 
-<div class="container" id="products"> 
-<section class="py-5">
-   <h1 class="font-weight-light">Trending Products</h1>
-    
-<div class="container1">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <img class="card-img-top img-fluid" src="sih\art3.jpg" alt="Card image cap">
-                    <br>
-					<br>
-                    <h4 class="card-title"> <a href="#"> Card title </a></h4>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <br>
-					</div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <img class="card-img-top img-fluid" src="sih\art3.jpg" alt="Card image cap">
-                    <br>
-					<br>
-                    <h4 class="card-title"> <a href="#"> Card title </a> </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+
+    <div class="container" id="products">
+        <section class="py-5">
+            <h1 class="font-weight-light">Trending Products</h1>
+
+            <div class="container1">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-block">
+                                <img class="card-img-top img-fluid" src="images\glasses.jpg " alt="Card image cap">
+                                <br>
+                                <br>
+                                <h4 class="card-title"> <a href="HANDICRAFT1">Glass art </a></h4>
+                                <p class="card-text">Art Deco is an elegant style of decorative art, design and architecture. It is characterized by the use of angular, symmetrical geometric forms.</p>
+                                <br>
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <img class="card-img-top img-fluid" src="sih\art3.jpg" alt="Card image cap">
-                    <br>
-					<br>
-                    <h4 class="card-title"> <a href="#"> Card title </a> </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in. 
-                     Aliquam codeply mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</p>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-block">
+                                <img class="card-img-top img-fluid" src="images\pot1.jpg" alt="Card image cap">
+                                <br>
+                                <br>
+                                <h4 class="card-title"> <a href="#">Fancy POT </a> </h4>
+                                <p class="card-text">Peach Double Shaded Pot Design Fancy Banarasi Silk Fabric per Metre.</p>
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <img class="card-img-top img-fluid" src="sih\art3.jpg" alt="Card image cap">
-                    <br>
-					<br>
-                    <h4 class="card-title"> <a href="#"> Card title </a> </h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-block">
+                                <img class="card-img-top img-fluid" src="images\art123.jpg" alt="Card image cap">
+                                <br>
+                                <br>
+                                <h4 class="card-title"> <a href="#"> Free hand painting </a> </h4>
+                                <p class="card-text">Free hand drawing is a method of sketching or drawing without using ... believe it can describe styles of art that are larger scale works such as graffiti painting.</p>
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-block">
+                                <img class="card-img-top img-fluid" src="images\copper.jpg" alt="Card image cap">
+                                <br>
+                                <br>
+                                <h4 class="card-title"> <a href="#"> Music set </a> </h4>
+                                <p class="card-text">Lahıc copper craft is a traditional folk art of Lahıc, Ismailli in Azerbaijan. It includes the production of copper crockery and other products.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <button class="btn btn-outline-primary" style="float: right;"> <a href="shop.php"> Explore More </a> </button>
+        </section>
     </div>
-  </div>
-  <button class="btn btn-outline-primary" style="float: right;"> <a href="cards.html"> Explore More </a> </button>
-</section>
-</div>
+
+
+
 
 
 <!-- Footer -->
@@ -289,9 +298,8 @@ function carousel() {
         <div class="col-md-4 mx-auto">
 
           <!-- Content -->
-          <h5 class="font-weight-bold text-uppercase mt-3 mb-4 bg-dark text-white">Footer Content</h5>
-          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.</p>
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4 bg-dark text-white">Azukarin Team</h5>
+          <p>Our online art gallery is dedicated to showcasing contemporary artists and their original art, while making it easier for the public to find them. Browse the online gallery for original art, then contact the artists or their galleries. Find art festivals, gallery shows, open studios and workshops.</p>
 
         </div>
         <!-- Grid column -->
@@ -302,20 +310,20 @@ function carousel() {
         <div class="col-md-2 mx-auto">
 
           <!-- Links -->
-          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Support</h5>
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Link 1</a>
+              <a href="#!">Donate Us</a>
             </li>
             <li>
-              <a href="#!">Link 2</a>
+              <a href="about.html">About Us</a>
             </li>
             <li>
-              <a href="#!">Link 3</a>
+              <a href="enquiry.html">Enquiry</a>
             </li>
             <li>
-              <a href="#!">Link 4</a>
+              <a href="faq.html">FAQ</a>
             </li>
           </ul>
 
@@ -327,52 +335,14 @@ function carousel() {
         <!-- Grid column -->
         <div class="col-md-2 mx-auto">
 
-          <!-- Links -->
-          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
+          
 
         </div>
         <!-- Grid column -->
 
         <hr class="clearfix w-100 d-md-none">
 
-        <!-- Grid column -->
-        <div class="col-md-2 mx-auto">
-
-          <!-- Links -->
-          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
+        
 
       </div>
       <!-- Grid row -->
@@ -380,44 +350,14 @@ function carousel() {
     </div>
     <!-- Footer Links -->
   <hr>
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1">
-          <i class="fab fa-facebook-f"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-tw mx-1">
-          <i class="fab fa-twitter"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-gplus mx-1">
-          <i class="fab fa-google-plus-g"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-li mx-1">
-          <i class="fab fa-linkedin-in"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-dribbble mx-1">
-          <i class="fab fa-dribbble"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
+    
+    
 
-    <!-- Copyright -->
+    
     <div class="footer-copyright text-center py-3 bg-dark text-white">© 2019 Copyright:
       <a href="https://mdbootstrap.com/education/bootstrap/"> Team Azukarin</a>
     </div>
-    <!-- Copyright -->
-
+   
 </footer>
-<!-- Footer -->
-	
 </body>
 </html>
